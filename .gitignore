@@ -7,4 +7,3 @@ dist/
 /.toolchain
 # 本地验证产物
 scripts/toolchain_probe*
-/docs
