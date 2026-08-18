@@ -1,0 +1,60 @@
+@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600;700&family=Fira+Sans:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    color-scheme: light;
+  }
+  body {
+    @apply bg-slate-50 text-ink antialiased;
+    font-family: 'Fira Sans', system-ui, -apple-system, sans-serif;
+  }
+  :focus-visible {
+    @apply outline-2 outline-offset-2 outline-primary;
+  }
+}
+
+@layer components {
+  .card {
+    @apply rounded-xl border border-line bg-surface shadow-sm;
+  }
+  .card-header {
+    @apply px-5 py-4 border-b border-line;
+  }
+  .card-body {
+    @apply px-5 py-4;
+  }
+  .badge {
+    @apply inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-xs font-medium;
+  }
+  .badge-success {
+    @apply badge bg-green-100 text-green-800;
+  }
+  .badge-warning {
+    @apply badge bg-amber-100 text-amber-800;
+  }
+  .badge-error {
+    @apply badge bg-red-100 text-red-800;
+  }
+  .badge-info {
+    @apply badge bg-blue-100 text-blue-800;
+  }
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 min-h-[44px] px-5 rounded-lg text-sm font-medium transition-colors focus-visible:outline-2 focus-visible:outline-offset-2;
+  }
+  .btn-primary {
+    @apply btn bg-primary text-white hover:bg-primary-dark;
+  }
+  .btn-secondary {
+    @apply btn bg-white text-ink border border-line hover:bg-slate-50;
+  }
+  .btn-destructive {
+    @apply btn bg-destructive text-white hover:bg-red-700;
+  }
+  .btn-ghost {
+    @apply btn text-ink-muted hover:bg-slate-100;
+  }
+}

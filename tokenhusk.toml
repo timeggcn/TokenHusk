@@ -1,0 +1,14 @@
+# TokenHusk 路由配置（AGENTS.md §4.4）。
+# Phase 0：仅 openai 默认上游。Path → target 映射在 Phase 1 接入更多服务商时启用。
+
+[proxy]
+listen = "127.0.0.1:10520"
+pipeline_timeout_ms = 50
+default_mode = "observe"   # observe / conservative / standard / aggressive
+upstream = "https://api.openai.com"
+
+# 示例（Phase 1 启用，当前 /v1/* 已默认转发到 upstream）：
+# [routes]
+# "/v1/chat/completions" = { target = "https://api.openai.com" }
+# "/v1/messages"         = { target = "https://api.anthropic.com" }
+# "/v1/chat/completions" = { target = "https://api.deepseek.com", match_header = "X-Provider: deepseek" }

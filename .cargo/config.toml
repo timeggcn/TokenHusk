@@ -1,0 +1,12 @@
+# 工具链配置：本机 FlyEnv 的 MSVC 工具链残缺处理。
+# - --sysroot 指向项目内合并的 sysroot（FlyEnv 的 rustc 与 rust-std 未合并）
+# - 用 rust-lld（lld-link）作为链接器，规避 git-bash /usr/bin/link 冒充 link.exe 的坑
+# - LIB 环境变量指向 Windows SDK 导入库（链接器 lld-link 需要）
+[build]
+rustflags = ["--sysroot=D:/wokespace/TokenHusk/.toolchain/sysroot"]
+
+[target.x86_64-pc-windows-msvc]
+linker = "D:/wokespace/TokenHusk/.toolchain/lld-link.exe"
+
+[env]
+LIB = "C:/Program Files (x86)/Windows Kits/10/Lib/10.0.26100.0/um/x64;C:/Program Files (x86)/Windows Kits/10/Lib/10.0.26100.0/ucrt/x64"

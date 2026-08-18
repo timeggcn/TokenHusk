@@ -1,0 +1,33 @@
+[package]
+name = "tokenhusk-core"
+version = "0.1.0"
+edition = "2021"
+description = "TokenHusk 核心库：代理 + 压缩管线 + 计数器。Phase 0 headless 验证。"
+
+# 根工作区用 default-members 指向本 crate，`cargo run` 直接跑 phase0_poc。
+default-run = "phase0_poc"
+
+[lib]
+name = "tokenhusk_core"
+# 纯 rlib：Phase 0 无移动端，无须 cdylib/staticlib（Phase 2 再加）。
+crate-type = ["rlib"]
+
+[[bin]]
+name = "phase0_poc"
+path = "src/bin/phase0_poc.rs"
+
+[dependencies]
+axum = "0.7"
+tokio = { version = "1", features = ["macros", "rt-multi-thread", "signal"] }
+reqwest = { version = "0.12", default-features = true, features = ["stream"] }
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+tiktoken-rs = "0.6"
+toml = "0.8"
+tracing = "0.1"
+tracing-subscriber = { version = "0.3", features = ["env-filter"] }
+thiserror = "2"
+tower = "0.5"
+rusqlite = { version = "0.31", features = ["bundled"] }
+chrono = "0.4"
+dirs = "5"

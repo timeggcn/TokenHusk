@@ -1,0 +1,25 @@
+[package]
+name = "tokenhusk"
+version = "0.1.0"
+edition = "2021"
+description = "TokenHusk 桌面端（Tauri 2.0 壳）。Phase 0 仅骨架；Phase 2 接入 UI 逻辑。"
+
+# GUI 壳非 Phase 0 验证目标（依赖 VS Build Tools 的 rc.exe 等资源工具）。
+# Phase 0 用 `cargo run`（= tokenhusk-core 的 phase0_poc）；本 crate 留待 Phase 2 完整构建。
+default-run = "tokenhusk"
+
+[lib]
+name = "tokenhusk"
+crate-type = ["staticlib", "cdylib", "rlib"]
+
+[[bin]]
+name = "tokenhusk"
+path = "src/main.rs"
+
+[build-dependencies]
+tauri-build = { version = "2", features = [] }
+
+[dependencies]
+tokenhusk-core = { path = "../crates/tokenhusk-core" }
+tauri = { version = "2", features = ["tray-icon"] }
+tracing = "0.1"

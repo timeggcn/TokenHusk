@@ -1,0 +1,10 @@
+node_modules/
+dist/
+# Rust
+/target
+**/*.rs.bk
+# 工具链 sysroot（机器相关，不入库）
+/.toolchain
+# 本地验证产物
+scripts/toolchain_probe*
+/docs

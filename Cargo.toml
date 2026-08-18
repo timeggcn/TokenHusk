@@ -1,0 +1,10 @@
+[workspace]
+resolver = "2"
+# 根工作区：Phase 0 拆出核心库（headless 验证用），Tauri 壳作为独立成员。
+# 拆开的根本原因：本机工具链缺 VS Build Tools 的 rc.exe，headless 验证不能被 Tauri 构建阻塞。
+# `cargo run` 走 default-members → tokenhusk-core 的 phase0_poc；Tauri 壳留给 Phase 2 完整构建。
+members = [
+    "crates/tokenhusk-core",
+    "src-tauri",
+]
+default-members = ["crates/tokenhusk-core"]
